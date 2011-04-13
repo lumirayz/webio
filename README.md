@@ -34,10 +34,10 @@ Example
 ### Javascript side ###
 
 	var sess = new webio.Session("/"); //or whatever resource you put EchoResource on
-	sess.onAccepted = function() {console.log("connected!");}
-	sess.onDenied = function(msg) {console.log("connection rejected, reason: " + msg);}
-	sess.onDisconnect = function() {console.log("disconnected!");}
-	sess.onMessage = function(msg) {console.log("message received: " + msg);}
+	sess.onAccepted = function() {console.log("connected!");};
+	sess.onDenied = function(msg) {console.log("connection rejected, reason: " + msg);};
+	sess.onDisconnect = function() {console.log("disconnected!");};
+	sess.onMessage = function(msg) {console.log("message received: " + msg);};
 	sess.start();
 	sess.send("hey there!");
 	sess.send("free pizza!");
