@@ -64,6 +64,10 @@ def wait(delay):
 	reactor.callLater(delay, d.callback, None)
 	return d
 
+# generate session id
+def _genID(): #super long because of paranoia
+	return "".join([uuid.uuid4().hex for i in range(4)])
+
 ################################################################
 # Denied
 ################################################################
@@ -122,8 +126,8 @@ class Session(object):
 class StartResource(resource.Resource):
 	def render_POST(self, req):
 		args = r(req.args)
-		for i in range(10):
-			sid = uuid.uuid4().hex
+		for i in range(50):
+			sid = _genID()
 			if sid not in self.parent.sessions: break
 		session = Session(sid)
 		session.parent = self.parent
